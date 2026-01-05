@@ -1,15 +1,15 @@
 # KdumpAgent
 KdumpAgent is an AI-powered agent that autonomously performs root cause analysis on Linux kernel crash dumps using an agentic workflow.
-It is an **Agentic AI** tool designed to act like a Senior Linux Kernel Engineer. , interacting with the `crash` utility to diagnose system failures and generating a professional HTML report with its findings. Unlike traditional tools that perform a "one-shot" analysis of a static log file, KdumpAgent uses an **interactive "Observe-Think-Act" workflow**. It connects directly to the Linux `crash` utility, iteratively executes commands, interprets the output, and decides the next logical step to drill down into the root cause of a kernel panic.
+It is an **Agentic AI** tool designed to act like a Senior Linux Kernel Engineer, interacting with the `crash` utility to diagnose system failures and generating a professional HTML report with its findings. Unlike traditional tools that perform a "one-shot" analysis of a static log file, KdumpAgent uses an **interactive "Observe-Think-Act" workflow**. It connects directly to the Linux `crash` utility, iteratively executes commands, interprets the output, and decides the next logical step to drill down into the root cause of a kernel panic.
 
 ---
 
 ### ✨ Key Features
-*   ** Agentic Workflow:** Implements a dynamic loop (Observe -> Think -> Act) to investigate issues step-by-step.
-*   ** Interactive Investigation:** Autonomously executes `crash` commands (e.g., `sys`, `bt`, `kmem`, `ps`) based on real-time findings.
-*   ** Chain-of-Thought Reasoning:** Analyzing context, identifying anomalies (OOM, Deadlocks, Null Pointers), and formulating hypotheses.
-*   ** Structured Reporting:** Generates a professional HTML dashboard containing the Conclusion, Technical Root Cause, Evidence, and Fix Recommendations.
-*   ** Audit Trail:** Automatically logs every command executed and the reasoning behind it for full transparency.
+*   **Agentic Workflow:** Implements a dynamic loop (Observe -> Think -> Act) to investigate issues step-by-step.
+*   **Interactive Investigation:** Autonomously executes `crash` commands (e.g., `sys`, `bt`, `kmem`, `ps`) based on real-time findings.
+*   **Chain-of-Thought Reasoning:** Analyzing context, identifying anomalies (OOM, Deadlocks, Null Pointers), and formulating hypotheses.
+*   **Structured Reporting:** Generates a professional HTML dashboard containing the Conclusion, Technical Root Cause, Evidence, and Fix Recommendations.
+*   **Audit Trail:** Automatically logs every command executed and the reasoning behind it for full transparency.
 
 ---
 
@@ -17,7 +17,7 @@ It is an **Agentic AI** tool designed to act like a Senior Linux Kernel Engineer
 
 | Feature | Traditional AI Analysis | **KdumpAgent** |
 | :--- | :--- | :--- |
-| **Input** | Static text (logs/backtrace) | Dynamic interaction with `vmcore` |
+| **Input** | Static logs/backtrace | Dynamic interaction with `vmcore` |
 | **Process** | Single-pass prediction | **Multi-turn investigation loop** |
 | **Context** | Limited to what is pasted | **Unlimited** (can query memory, tasks, registers) |
 | **Accuracy** | Prone to hallucinations based on limited data | **Verifies hypotheses** with actual commands |
@@ -33,27 +33,35 @@ KdumpAgent uses a methodical, closed-loop process to analyze a crash dump. At ea
 
 This loop continues until the agent is confident it has found the root cause, at which point it generates a final report.
 
-```+---------------------------+
-|      KdumpAgent Loop      |
-+---------------------------+
-|                           |
-|   [ 1. OBSERVE ]          |
-|   Read crash output       |
-|       +-----------------> |
-|                           |
-|   [ 2. THINK ]            |
-|   Formulate Hypothesis    |
-|       +-----------------> |
-|                           |
-|   [ 3. ACT ]              |
-|   Execute new commands    |
-|       +-----------------> |
-|                           |
-|   Is RCA found? ---> YES ---> [ Finish & Report ]
-|       |
-|       NO
-|       |
-+-------+-------------------+
+```
++-------------------------------------------------------+
+|               KdumpAgent Investigation Loop           |
++-------------------------------------------------------+
+|                                                       |
+|                  Start Investigation                  |
+|                          |                            |
+|                          v                            |
+|        +---->      [ 1. OBSERVE ]                     |
+|        |         Read previous output                 |
+|        |                 |                            |
+|        |                 v                            |
+|        |           [ 2. THINK ]                       |
+|        |            Analyze & Plan                    |
+|        |                 |                            |
+|        |       Is Root Cause Found?                   |
+|        |                 |                            |
+|        |        +----------------------+              |
+|        |        |                      |              |
+|        |        | No                   | Yes          |
+|        |        v                      v              |
+|        |    [ 3. ACT ]            [ 4. REPORT ]       |
+|        |    Execute 'crash'       Generate HTML       |
+|        |    commands              Dashboard           |
+|        |         |                      |             |
+|        |         v                      v             |
+|        +---- [ Loop ]                (Exit)           |
+|                                                       |
++-------------------------------------------------------+
 ```
 
 ---
