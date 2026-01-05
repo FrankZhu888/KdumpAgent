@@ -1,18 +1,27 @@
 # KdumpAgent
 KdumpAgent is an AI-powered agent that autonomously performs root cause analysis on Linux kernel crash dumps using an agentic workflow.
-It acts like a virtual Senior Kernel Engineer, interacting with the `crash` utility to diagnose system failures and generating a professional HTML report with its findings.
+It is an **Agentic AI** tool designed to act like a Senior Linux Kernel Engineer. , interacting with the `crash` utility to diagnose system failures and generating a professional HTML report with its findings. Unlike traditional tools that perform a "one-shot" analysis of a static log file, KdumpAgent uses an **interactive "Observe-Think-Act" workflow**. It connects directly to the Linux `crash` utility, iteratively executes commands, interprets the output, and decides the next logical step to drill down into the root cause of a kernel panic.
 
 ---
 
 ### ✨ Key Features
-
--   ** Autonomous RCA**: Set it on a `vmcore` file, and it will work on its own to find the root cause.
--   ** Agentic Workflow**: Employs an **Observe → Think → Act** loop to intelligently drill down into problems, rather than using a fixed set of commands.
--   ** Deep Integration with `crash`**: Leverages the full power of the standard Linux `crash` utility for deep analysis.
--   ** Professional HTML Reports**: Generates a clean, structured, and easy-to-read HTML report detailing the conclusion, root cause, evidence, and recommendations.
--   ** Easy Configuration**: Simply provide your LLM API key and endpoint to get started.
+*   ** Agentic Workflow:** Implements a dynamic loop (Observe -> Think -> Act) to investigate issues step-by-step.
+*   ** Interactive Investigation:** Autonomously executes `crash` commands (e.g., `sys`, `bt`, `kmem`, `ps`) based on real-time findings.
+*   ** Chain-of-Thought Reasoning:** Analyzing context, identifying anomalies (OOM, Deadlocks, Null Pointers), and formulating hypotheses.
+*   ** Structured Reporting:** Generates a professional HTML dashboard containing the Conclusion, Technical Root Cause, Evidence, and Fix Recommendations.
+*   ** Audit Trail:** Automatically logs every command executed and the reasoning behind it for full transparency.
 
 ---
+
+## Why KdumpAgent?
+
+| Feature | Traditional AI Analysis | **KdumpAgent** |
+| :--- | :--- | :--- |
+| **Input** | Static text (logs/backtrace) | Dynamic interaction with `vmcore` |
+| **Process** | Single-pass prediction | **Multi-turn investigation loop** |
+| **Context** | Limited to what is pasted | **Unlimited** (can query memory, tasks, registers) |
+| **Accuracy** | Prone to hallucinations based on limited data | **Verifies hypotheses** with actual commands |
+
 
 ### ⚙️ How It Works
 
