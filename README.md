@@ -104,12 +104,15 @@ The agent will start its analysis loop, printing its thought process at each ste
 
 ### 📜 Sample Report
 
-The generated report is a self-contained HTML file that looks like this:
-
-> A screenshot of the beautiful HTML report would go here. It should show the header, severity, conclusion, root cause, and audit log sections.
+The generated report is a self-contained HTML file that looks like this, it shows the header, severity, conclusion, root cause, and audit log sections.
 
 <img width="2258" height="1888" alt="image" src="https://github.com/user-attachments/assets/96ae4294-21ea-4c5b-8e40-b70695e900a5" />
 
+## Support Contact
+
+For issues or questions, contact:
+
+Frank Zhu [flankeroot@gmail.com](mailto:flankeroot@gmail.com)  
 
 
 
