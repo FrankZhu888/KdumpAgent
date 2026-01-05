@@ -99,7 +99,8 @@ python3 KdumpAgent.py \
 
 The agent will start its analysis loop, printing its thought process at each step. Once finished, a detailed HTML report will be saved to the specified output file (or `kdump_agent_report.html` by default).
 
----
+<img width="3010" height="2016" alt="image" src="https://github.com/user-attachments/assets/fb259525-8550-408b-a66a-0792be05daeb" />
+
 
 ### 📜 Sample Report
 
@@ -107,6 +108,7 @@ The generated report is a self-contained HTML file that looks like this:
 
 > A screenshot of the beautiful HTML report would go here. It should show the header, severity, conclusion, root cause, and audit log sections.
 
+<img width="2258" height="1888" alt="image" src="https://github.com/user-attachments/assets/96ae4294-21ea-4c5b-8e40-b70695e900a5" />
 
 
 
